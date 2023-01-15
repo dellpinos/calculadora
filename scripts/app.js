@@ -40,7 +40,13 @@ let numeroString = '';
 
 let primerNumero = 0;
 let segundoNumero = 0;
-let operacion = 0;
+
+let operacion = [];
+
+//inicializar operacion
+for(x=0; x<16; x++) {
+    operacion[x] = false;
+}
 
 // Listeners
 
@@ -83,18 +89,39 @@ coma.addEventListener('click', function(){
     }
 });
 
+let flagDobleOperador = 0;
+
 // Operadores
 sumar.addEventListener('click', function(){
-    operador('+');
+    almacenarNumero();
+    if(operacion[0] == true) {
+        cicloOperador();
+    }
+    operacion [0] = true;
+    limpiarPantalla();
+
+
+    //operador('+');
 });
 restar.addEventListener('click', function(){
-    operador('-');
+    almacenarNumero();
+    if(operacion[1] == true) {
+        cicloOperador();
+    }
+    operacion [1] = true;
+    limpiarPantalla();
+
+//    operador('-');
 });
 dividir.addEventListener('click', function(){
-    operador('/');
+    operacion[2] = true;
+
+//    operador('/');
 });
 multiplicar.addEventListener('click', function(){
-    operador('*');
+    operacion[3] = true;
+
+//    operador('*');
 });
 
 potencia.addEventListener('click', function(){
@@ -106,9 +133,6 @@ porcentaje.addEventListener('click', function(){
 
 // Otros
 enter.addEventListener('click', function(){
-    almacenarNumero();
-    limpiarPantalla();
-    numeroVisible.textContent = primerNumero;
 });
 reset.addEventListener('click', function(){
 });
@@ -139,48 +163,74 @@ function almacenarNumero (numero) {
         primerNumero = Number(numeroString);
         almacenarNumeroFlag++;
         limpiarPantalla();
+        console.log(`primer numero ${primerNumero}`);
     } else {
         segundoNumero = Number(numeroString);
         limpiarPantalla();
+        console.log(`segundo numero ${segundoNumero}`);
+
     }
 }
+
+function cicloOperador() {
+    for(x=0; x<16; x++) {
+        if( operacion [x] == true) {
+            operador (x);
+            operacion [x] = false;
+        }
+    }
+}
+
+let resultado = 0;
 
 function operador (operador) {
     switch(operador) {
-        case '+':
-            almacenarNumero();
-            if(almacenarNumeroFlag != 0) {
-                primerNumero = primerNumero + segundoNumero;
-                console.log(primerNumero);
-            }
+        case 0:
+            resultado = primerNumero + segundoNumero;
+            console.log(resultado);
+            segundoNumero = 0;
+            primerNumero = resultado;
             console.log('+');
             break;
-        case '-':
-            almacenarNumero();
-            if(almacenarNumeroFlag != 0) {
-                primerNumero = primerNumero - segundoNumero;
-                console.log(primerNumero);
-            }
+        case 1:
+            resultado = primerNumero - segundoNumero; // No funciona porq suma antes de restar
+            console.log(resultado);
+            segundoNumero = 0;
+            primerNumero = resultado;
             console.log('-');
             break;
-        case '/':
-
-            console.log('/');
-            break;
-        case '*':
-            console.log('*');
-            break;
-        case 'pot':
-            console.log('pot');
-            break;
-        case 'raiz':
-            console.log('raiz');
-            break;
-        case 'porc':
-            console.log('porcentaje');
-            break;
-        default:
-            console.log('switchError');
     }
 }
+//     switch(operador) {
+//         case '+':
+//             almacenarNumero();
+//             if(almacenarNumeroFlag != 0) {
+//                 primerNumero = primerNumero + segundoNumero;
+//                 console.log(primerNumero);
+//             }
+//             console.log('+');
+//             break;
+//         case '-':
+//             }
+//             console.log('-');
+//             break;
+//         case '/':
 
+//             console.log('/');
+//             break;
+//         case '*':
+//             console.log('*');
+//             break;
+//         case 'pot':
+//             console.log('pot');
+//             break;
+//         case 'raiz':
+//             console.log('raiz');
+//             break;
+//         case 'porc':
+//             console.log('porcentaje');
+//             break;
+//         default:
+//             console.log('switchError');
+//     }
+// }
