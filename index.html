@@ -1,18 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/styles.css">
-    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="preload" href="build/css/styles.css" as="style">
+
+    <link rel="stylesheet" href="build/css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
 
     <title>Calculadora</title>
 </head>
+
 <body>
-<header>
-    <h1 class="centrar-texto">Soy tu header</h1>
-</header>
+    <header>
+        <h1 class="centrar-texto">Soy tu header</h1>
+    </header>
 
     <main>
         <div class="contenedor">
@@ -39,7 +46,7 @@
                 <div class="boton" id="numeroDos">2</div>
                 <div class="boton" id="numeroTres">3</div>
                 <div class="boton" id="restar">-</div>
-                
+
                 <div class="boton" id="numeroCero">0</div>
                 <div class="boton" id="coma">,</div>
                 <div class="boton" id="enter">=</div>
@@ -49,10 +56,11 @@
         </div>
 
     </main>
-    
+
 </body>
-<footer>
+<footer class="footer">
     <h2 class="centrar-texto">No me siento un footer :(</h2>
 </footer>
 <script src="scripts/app.js"></script>
+
 </html>

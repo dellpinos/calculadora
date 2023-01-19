@@ -1,0 +1,26 @@
+{
+  "name": "calculadora",
+  "version": "1.0.3",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass src/scss:build/css",
+    "dev": "gulp dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dellpinos/calculadora.git"
+  },
+  "author": "Mdp",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dellpinos/calculadora/issues"
+  },
+  "homepage": "https://github.com/dellpinos/calculadora#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-plumber": "^1.2.1",
+    "gulp-sass": "^5.1.0",
+    "sass": "^1.57.1"
+  }
+}
