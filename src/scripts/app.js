@@ -92,11 +92,11 @@ coma.addEventListener('click', function(){
 let flagDobleOperador = 0;
 
 // Operadores
+if(flagDobleOperador) {
 
+}
 
     sumar.addEventListener('click', function(){
-
-    
         almacenarNumero();
         if(operacion[0] == true) {
             cicloOperador();
@@ -114,7 +114,6 @@ let flagDobleOperador = 0;
         operacion [1] = true;
         limpiarPantalla();
         
-    
     });
     dividir.addEventListener('click', function(){
         almacenarNumero();
@@ -125,7 +124,6 @@ let flagDobleOperador = 0;
         operacion [2] = true;
         limpiarPantalla();
         
-    
     });
     multiplicar.addEventListener('click', function(){
         almacenarNumero();
@@ -136,7 +134,6 @@ let flagDobleOperador = 0;
         operacion [3] = true;
         limpiarPantalla();
         
-    
     });
 
 

@@ -1,4 +1,4 @@
-const {src, dest, watch} = require('gulp');
+const { src, dest, watch, parallel } = require("gulp");
 
 const sass = require('gulp-sass')(require('sass'));
 const plumber = require('gulp-plumber');
@@ -21,3 +21,5 @@ function dev(done) {
 
 exports.css = css;
 exports.dev = dev;
+
+//

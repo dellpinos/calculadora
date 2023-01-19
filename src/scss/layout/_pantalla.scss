@@ -1,6 +1,18 @@
-h1 {
-    background-color: red;
-}
-h2 {
-    color:aqua;
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+
+#pantalla {
+    display: flex;
+    justify-content: end;
+    align-items: flex-end;
+    font-size: 4.3rem;
+    width: 80%;
+    margin: 3rem;
+    text-align: end;
+    color: #000000;
+    font-weight: bold;
+    background-color: v.$grisClaro;
+    height: 15%;
+    padding: 0.5rem;
 }
