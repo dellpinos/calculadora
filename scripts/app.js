@@ -92,37 +92,55 @@ coma.addEventListener('click', function(){
 let flagDobleOperador = 0;
 
 // Operadores
-sumar.addEventListener('click', function(){
-    almacenarNumero();
-    if(operacion[0] == true) {
-        cicloOperador();
-    }
-    operacion [0] = true;
-    limpiarPantalla();
 
 
-    //operador('+');
-});
-restar.addEventListener('click', function(){
-    almacenarNumero();
-    if(operacion[1] == true) {
-        cicloOperador();
-    }
-    operacion [1] = true;
-    limpiarPantalla();
+    sumar.addEventListener('click', function(){
 
-//    operador('-');
-});
-dividir.addEventListener('click', function(){
-    operacion[2] = true;
+    
+        almacenarNumero();
+        if(operacion[0] == true) {
+            cicloOperador();
+        }
+        operacion [0] = true;
+        limpiarPantalla();
+        
+    });
+    restar.addEventListener('click', function(){
+        almacenarNumero();
+        console.log('-');
+        if(operacion[1] == true) {
+            cicloOperador();
+        }
+        operacion [1] = true;
+        limpiarPantalla();
+        
+    
+    });
+    dividir.addEventListener('click', function(){
+        almacenarNumero();
+        console.log('/');
+        if(operacion[2] == true) {
+            cicloOperador();
+        }
+        operacion [2] = true;
+        limpiarPantalla();
+        
+    
+    });
+    multiplicar.addEventListener('click', function(){
+        almacenarNumero();
+        console.log('*');
+        if(operacion[3] == true) {
+            cicloOperador();
+        }
+        operacion [3] = true;
+        limpiarPantalla();
+        
+    
+    });
 
-//    operador('/');
-});
-multiplicar.addEventListener('click', function(){
-    operacion[3] = true;
 
-//    operador('*');
-});
+
 
 potencia.addEventListener('click', function(){
 });
@@ -133,8 +151,14 @@ porcentaje.addEventListener('click', function(){
 
 // Otros
 enter.addEventListener('click', function(){
+    almacenarNumero();
+    cicloOperador();
+
 });
+
+
 reset.addEventListener('click', function(){
+    location.reload()
 });
 
 // Funciones
@@ -177,60 +201,43 @@ function cicloOperador() {
         if( operacion [x] == true) {
             operador (x);
             operacion [x] = false;
+            console.log(`ciclo operador: ${operacion [x]} y x: ${x}`)
         }
     }
 }
 
-let resultado = 0;
+// let resultado = 0;
 
 function operador (operador) {
     switch(operador) {
         case 0:
-            resultado = primerNumero + segundoNumero;
-            console.log(resultado);
-            segundoNumero = 0;
-            primerNumero = resultado;
+            primerNumero = primerNumero + segundoNumero;
+            numeroVisible.textContent = primerNumero; // mostrar resultado en pantalla
+            console.log(primerNumero); 
             console.log('+');
+            
             break;
         case 1:
-            resultado = primerNumero - segundoNumero; // No funciona porq suma antes de restar
-            console.log(resultado);
-            segundoNumero = 0;
-            primerNumero = resultado;
             console.log('-');
+            primerNumero = primerNumero - segundoNumero;
+            numeroVisible.textContent = primerNumero;
+            console.log(primerNumero);
+            break;
+        
+        case 2:
+            console.log('/');
+            primerNumero = primerNumero / segundoNumero;
+            numeroVisible.textContent = primerNumero;
+            console.log(primerNumero);
+            break;
+        case 3:
+            console.log('*');
+            primerNumero = primerNumero * segundoNumero;
+            numeroVisible.textContent = primerNumero;
+            console.log(primerNumero);
+            break;
+        default : 
+        console.log('Error de switch');
             break;
     }
 }
-//     switch(operador) {
-//         case '+':
-//             almacenarNumero();
-//             if(almacenarNumeroFlag != 0) {
-//                 primerNumero = primerNumero + segundoNumero;
-//                 console.log(primerNumero);
-//             }
-//             console.log('+');
-//             break;
-//         case '-':
-//             }
-//             console.log('-');
-//             break;
-//         case '/':
-
-//             console.log('/');
-//             break;
-//         case '*':
-//             console.log('*');
-//             break;
-//         case 'pot':
-//             console.log('pot');
-//             break;
-//         case 'raiz':
-//             console.log('raiz');
-//             break;
-//         case 'porc':
-//             console.log('porcentaje');
-//             break;
-//         default:
-//             console.log('switchError');
-//     }
-// }
