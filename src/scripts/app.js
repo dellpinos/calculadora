@@ -42,128 +42,153 @@ let primerNumero = 0;
 let segundoNumero = 0;
 
 let operacion = [];
+let flagDobleOperador = 0;
 
 //inicializar operacion
-for(x=0; x<16; x++) {
+for (x = 0; x < 16; x++) {
     operacion[x] = false;
 }
 
 // Listeners
 
 // Numeros
-numeroCero.addEventListener('click', function(){
+numeroCero.addEventListener('click', function () {
+    botonPresionado(numeroCero);
     armarNumero('0');
 });
-numeroUno.addEventListener('click', function(){
+numeroUno.addEventListener('click', function () {
+    botonPresionado(numeroUno);
     armarNumero('1');
 });
-numeroDos.addEventListener('click', function(){
+numeroDos.addEventListener('click', function () {
+    botonPresionado(numeroDos);
     armarNumero('2');
 });
-numeroTres.addEventListener('click', function(){
+numeroTres.addEventListener('click', function () {
+    botonPresionado(numeroTres);
     armarNumero('3');
 });
-numeroCuatro.addEventListener('click', function(){
+numeroCuatro.addEventListener('click', function () {
+    botonPresionado(numeroCuatro);
     armarNumero('4');
 });
-numeroCinco.addEventListener('click', function(){
+numeroCinco.addEventListener('click', function () {
+    botonPresionado(numeroCinco);
     armarNumero('5');
 });
-numeroSeis.addEventListener('click', function(){
+numeroSeis.addEventListener('click', function () {
+    botonPresionado(numeroSeis);
     armarNumero('6');
 });
-numeroSiete.addEventListener('click', function(){
+numeroSiete.addEventListener('click', function () {
+    botonPresionado(numeroSiete);
     armarNumero('7');
 });
-numeroOcho.addEventListener('click', function(){
+numeroOcho.addEventListener('click', function () {
+    botonPresionado(numeroOcho);
     armarNumero('8');
 });
-numeroNueve.addEventListener('click', function(){
+numeroNueve.addEventListener('click', function () {
+    botonPresionado(numeroNueve);
     armarNumero('9');
 });
 
-coma.addEventListener('click', function(){
-    if(comaFlag === 0){
+coma.addEventListener('click', function () {
+    botonPresionado(coma);
+    if (comaFlag === 0) {
         armarNumero('.');
         comaFlag++;
     }
 });
 
-let flagDobleOperador = 0;
 
 // Operadores
-if(flagDobleOperador) {
-
-}
-
-    sumar.addEventListener('click', function(){
+if (!flagDobleOperador) {
+    
+    flagDobleOperador++;
+    sumar.addEventListener('click', function () {
+        botonPresionado(sumar);
         almacenarNumero();
-        if(operacion[0] == true) {
+        if (operacion[0] == true) {
             cicloOperador();
         }
-        operacion [0] = true;
+        operacion[0] = true;
         limpiarPantalla();
-        
+        flagDobleOperador = 0;
+
     });
-    restar.addEventListener('click', function(){
+    restar.addEventListener('click', function () {
+        botonPresionado(restar);
         almacenarNumero();
         console.log('-');
-        if(operacion[1] == true) {
+        if (operacion[1] == true) {
             cicloOperador();
         }
-        operacion [1] = true;
+        operacion[1] = true;
         limpiarPantalla();
-        
+        flagDobleOperador = 0;
+
     });
-    dividir.addEventListener('click', function(){
+    dividir.addEventListener('click', function () {
+        botonPresionado(dividir);
         almacenarNumero();
         console.log('/');
-        if(operacion[2] == true) {
+        if (operacion[2] == true) {
             cicloOperador();
         }
-        operacion [2] = true;
+        operacion[2] = true;
         limpiarPantalla();
-        
+        flagDobleOperador = 0;
+
     });
-    multiplicar.addEventListener('click', function(){
+    multiplicar.addEventListener('click', function () {
+        botonPresionado(multiplicar);
         almacenarNumero();
         console.log('*');
-        if(operacion[3] == true) {
+        if (operacion[3] == true) {
             cicloOperador();
         }
-        operacion [3] = true;
+        operacion[3] = true;
         limpiarPantalla();
-        
+        flagDobleOperador = 0;
+
     });
 
 
 
-
-potencia.addEventListener('click', function(){
-});
-raiz.addEventListener('click', function(){
-});
-porcentaje.addEventListener('click', function(){
-});
-
-// Otros
-enter.addEventListener('click', function(){
-    almacenarNumero();
-    cicloOperador();
-
-});
+    potencia.addEventListener('click', function () {
+        flagDobleOperador = 0;
+    });
+    raiz.addEventListener('click', function () {
+        flagDobleOperador = 0;
+    });
+    porcentaje.addEventListener('click', function () {
+        flagDobleOperador = 0;
+    });
 
 
-reset.addEventListener('click', function(){
+    enter.addEventListener('click', function () {
+        botonPresionado(enter);
+        almacenarNumero();
+        cicloOperador();
+        flagDobleOperador = 0;
+    });
+}
+
+
+
+
+reset.addEventListener('click', function () {
+    botonPresionado(reset);
     location.reload()
 });
 
 // Funciones
 
-function armarNumero(numero){
-    if(flagNumero < 16){
+function armarNumero(numero) {
+    if (flagNumero < 16) {
         numeroIngresado[flagNumero] = numero;
-        flagNumero ++;
+        flagNumero++;
         numeroString = numeroIngresado.join('');
         numeroVisible.textContent = numeroString;
     }
@@ -174,13 +199,13 @@ function limpiarPantalla() {
     numeroVisible.textContent = '';
     flagNumero = 0;
     comaFlag = 0;
-    for(x = 0; x < 16; x++){
-        numeroIngresado [x] = ''; /// no funciona
+    for (x = 0; x < 16; x++) {
+        numeroIngresado[x] = ''; /// no funciona
     }
 }
 
-function almacenarNumero (numero) {
-    if(almacenarNumeroFlag == 0){
+function almacenarNumero(numero) {
+    if (almacenarNumeroFlag == 0) {
         primerNumero = Number(numeroString);
         almacenarNumeroFlag++;
         limpiarPantalla();
@@ -194,25 +219,25 @@ function almacenarNumero (numero) {
 }
 
 function cicloOperador() {
-    for(x=0; x<16; x++) {
-        if( operacion [x] == true) {
-            operador (x);
-            operacion [x] = false;
-            console.log(`ciclo operador: ${operacion [x]} y x: ${x}`)
+    for (x = 0; x < 16; x++) {
+        if (operacion[x] == true) {
+            operador(x);
+            operacion[x] = false;
+            console.log(`ciclo operador: ${operacion[x]} y x: ${x}`)
         }
     }
 }
 
 // let resultado = 0;
 
-function operador (operador) {
-    switch(operador) {
+function operador(operador) {
+    switch (operador) {
         case 0:
             primerNumero = primerNumero + segundoNumero;
             numeroVisible.textContent = primerNumero; // mostrar resultado en pantalla
-            console.log(primerNumero); 
+            console.log(primerNumero);
             console.log('+');
-            
+
             break;
         case 1:
             console.log('-');
@@ -220,7 +245,7 @@ function operador (operador) {
             numeroVisible.textContent = primerNumero;
             console.log(primerNumero);
             break;
-        
+
         case 2:
             console.log('/');
             primerNumero = primerNumero / segundoNumero;
@@ -233,8 +258,18 @@ function operador (operador) {
             numeroVisible.textContent = primerNumero;
             console.log(primerNumero);
             break;
-        default : 
-        console.log('Error de switch');
+        default:
+            console.log('Error de switch');
             break;
     }
+}
+
+function botonPresionado(id) {
+    id.classList.remove('boton-nopresionado');
+    id.classList.add('boton-presionado');
+    setTimeout(() => {
+        id.classList.add('boton-nopresionado');
+        id.classList.remove('boton-presionado');
+    }, 500);
+
 }
